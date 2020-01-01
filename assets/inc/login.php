@@ -12,6 +12,7 @@ catch(Exception $e)
 $req = $bdd->query('SELECT * FROM utilisateur');
 while ($info = $req->fetch())
 {
+$id_valide = $info['id'];
 $login_valide = $info['user'];
 $pwd_valide = $info['psw'];
 $email_valide = $info['email'];
@@ -27,10 +28,23 @@ if (isset($_POST['login']) && isset($_POST['pwd'])) {
 		// on la démarre :)
 		session_start ();
 		// on enregistre les paramètres de notre visiteur comme variables de session ($login et $pwd) (notez bien que l'on utilise pas le $ pour enregistrer ces variables)
+		$_SESSION['id'] = $id_valide;
 		$_SESSION['login'] = $_POST['login'];
 		$_SESSION['pwd'] = $_POST['pwd'];
 		$_SESSION['email'] = $email_valide;
 		$_SESSION['avatar'] = $avatar_valide;
+
+		//
+		$online = 'yes';
+		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    
+        $sql = "UPDATE utilisateur SET online='$online'WHERE user='$login_valide'";
+                    
+        // Prepare statement
+        $stmt = $bdd->prepare($sql);
+					
+		// execute the query
+        $stmt->execute();
 
 		// on redirige notre visiteur vers la page index
         header ('location: ../../index.php');

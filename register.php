@@ -1,4 +1,6 @@
 
+
+<!-- //  creation du formulaire d'enregistrement -->
             <form class="register" action="register.php" method="post">
                 <p>Pseudo: <input type="textarea" name="pseudo"></p>
                 <p>Mot de Passe : <input type="password" name="mdp1"></p>
@@ -9,12 +11,14 @@
                 <button type="submit" name="register" value="register">S'inscrire</button>
             </form>
 <?php
+    //function ascynchrome qui permet une récupération des données ainsi qu'une connection a la bdd
     try
     {
         include('bdd.php');
 
-
+        // vérifie si il y a eu post ou non
         if ( $_SERVER["REQUEST_METHOD"] == "POST" AND isset($_POST["register"]) ) { 
+            // sanatization des différentes informations et vérifications des informations
             $pseudoBrut= $_POST['pseudo'];
             $pseudo= filter_var($pseudoBrut, FILTER_SANITIZE_STRING);
             $mdp1Brut= $_POST['mdp1'];
@@ -41,6 +45,7 @@
                 echo "<p>* Veuillez indiquer l'url de votre avatar.</p>";
             }
             else {
+                // si tout est ok, prépare une connexion a la bdd et envoi les infos
                 $req = $bdd->prepare('INSERT INTO utilisateur(user, email, psw, avatar) VALUES(:user, :email, :psw, :avatar)');
                 $req->execute(array(
                     'user' => $pseudo,

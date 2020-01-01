@@ -9,13 +9,16 @@
 </head>
 <body>
     <header>
+        <h2>Utilisateur en ligne</h2>
+        <div class="userOnline" id="useronline"></div>
+        <h2>Votre profil</h2>
         <?php
         if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
-            echo '<body>';
             echo '<img src="'.$_SESSION['avatar'].'" alt="user" style="width: 100px; height: 100px; border-radius: 100px; border: 3px solid pink;"></img>';
             echo '<p>Votre login est '.$_SESSION['login'].'</p>';
             echo 'Votre email est '.$_SESSION['email'].'</p>';
-            echo '<a href="assets/inc/logout.php">Déconnection</a>';
+            echo '<p><button><a href="assets/inc/logout.php">Déconnection</a></button></p>';
+            echo '<p><button><a href="assets/inc/modifyuser.php?id='.$_SESSION['id'].'">Modifier mon compte</a></button></p>';
         }else{
         ?>
         <h2> Connexion </h2>
@@ -33,11 +36,11 @@
 
 
     <h2>Message</h2>
-    <div class="content"  style="overflow:scroll; height:300px;">
+    <div class="content"  style="overflow-x:scroll; height:300px;">
         <div id="messageAfficher">
         </div>
     </div>
-    <?php include("assets/inc/message.php");?>
+    <?php include("assets/inc/sendmessage.php");?>
 
     <footer>
 
