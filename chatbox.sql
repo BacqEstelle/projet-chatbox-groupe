@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Lun 30 Décembre 2019 à 16:11
+-- Généré le :  Mer 01 Janvier 2020 à 15:49
 -- Version du serveur :  5.7.28-0ubuntu0.18.04.4
 -- Version de PHP :  7.2.24-0ubuntu0.18.04.1
 
@@ -30,7 +30,7 @@ CREATE TABLE `message` (
   `id` int(11) NOT NULL,
   `user` varchar(22) NOT NULL,
   `date` datetime NOT NULL,
-  `message` varchar(255) NOT NULL,
+  `message` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `avatar` varchar(2083) CHARACTER SET ascii NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -39,10 +39,12 @@ CREATE TABLE `message` (
 --
 
 INSERT INTO `message` (`id`, `user`, `date`, `message`, `avatar`) VALUES
-(7, 'user', '2019-12-30 14:59:47', 'je test ', 'https://cdn1.booknode.com/avatarpic/custom/870/sa.php?idperso=870036&w=200&h=200&respectRatio=1'),
-(8, 'test', '2019-12-30 15:01:32', 'flut', 'https://i.skyrock.net/9942/86329942/pics/3162033098_1_2_KbstGfNs.gif'),
-(9, 'test', '2019-12-30 15:25:17', 'hahahah', 'https://i.skyrock.net/9942/86329942/pics/3162033098_1_2_KbstGfNs.gif'),
-(10, 'Estelle', '2019-12-30 15:47:58', 'Je test ca !', 'https://cdn1.booknode.com/avatarpic/custom/1105/sa.php?idperso=1104741&w=200&h=200&respectRatio=1');
+(1, 'user', '2020-01-01 14:52:06', '<p>test</p>', 'https://cdn1.booknode.com/avatarpic/custom/870/sa.php?idperso=870036&w=200&h=200&respectRatio=1'),
+(2, 'user', '2020-01-01 14:52:10', '<p>aie</p>', 'https://cdn1.booknode.com/avatarpic/custom/870/sa.php?idperso=870036&w=200&h=200&respectRatio=1'),
+(3, 'user', '2020-01-01 14:52:37', '<p>aie</p>', 'https://cdn1.booknode.com/avatarpic/custom/870/sa.php?idperso=870036&w=200&h=200&respectRatio=1'),
+(4, 'user', '2020-01-01 15:24:36', '<p>ouille</p>', 'https://cdn1.booknode.com/avatarpic/custom/870/sa.php?idperso=870036&w=200&h=200&respectRatio=1'),
+(5, 'user', '2020-01-01 15:24:40', '<p>oups</p>', 'https://cdn1.booknode.com/avatarpic/custom/870/sa.php?idperso=870036&w=200&h=200&respectRatio=1'),
+(6, 'user', '2020-01-01 15:24:55', '<p>test</p>', 'https://cdn1.booknode.com/avatarpic/custom/870/sa.php?idperso=870036&w=200&h=200&respectRatio=1');
 
 -- --------------------------------------------------------
 
@@ -91,7 +93,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --

@@ -15,11 +15,11 @@
             echo '<img src="'.$_SESSION['avatar'].'" alt="user" style="width: 100px; height: 100px; border-radius: 100px; border: 3px solid pink;"></img>';
             echo '<p>Votre login est '.$_SESSION['login'].'</p>';
             echo 'Votre email est '.$_SESSION['email'].'</p>';
-            echo '<a href="logout.php">Déconnection</a>';
+            echo '<a href="assets/inc/logout.php">Déconnection</a>';
         }else{
         ?>
         <h2> Connexion </h2>
-        <form action="login.php" method="post">
+        <form action="assets/inc/login.php" method="post">
         <span>Votre login : <input type="text" name="login">
         Votre mot de passé : <input type="password" name="pwd"></span>
 
@@ -29,15 +29,20 @@
         <?php
         }
         ?>
-    <header>
+    </header>
 
 
     <h2>Message</h2>
-    <?php include ("message.php")?>
-
+    <div class="content"  style="overflow:scroll; height:300px;">
+        <div id="messageAfficher">
+        </div>
+    </div>
+    <?php include("assets/inc/message.php");?>
 
     <footer>
 
     </footer>
+<script src="assets/js/refresh.js"></script>
+
 </body>
 </html>

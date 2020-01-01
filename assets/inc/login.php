@@ -33,7 +33,7 @@ if (isset($_POST['login']) && isset($_POST['pwd'])) {
 		$_SESSION['avatar'] = $avatar_valide;
 
 		// on redirige notre visiteur vers la page index
-        header ('location: index.php');
+        header ('location: ../../index.php');
         echo '<body onLoad="alert(\'Vous êtes maintenant connecté\')">';
     }
 	else {
