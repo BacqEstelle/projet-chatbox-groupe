@@ -14,10 +14,18 @@
                 <form class="changevalue" action="modifyuser.php?id=<?php echo $donnesModify['id']; ?>" method="POST">
                     <p>ID: <?php echo $donnesModify['id'];?></p>
                     <p>Pseudo : <?php echo $donnesModify['user']; ?></p>
-                    <p>Mot de passe : <input type="text" name="mdp1" required></p>
-                    <p>Retaper le Mot de passe : <input type="text" name="mdp2" required></p>
+                    <p>Mot de passe : <input type="password" name="mdp1" required></p>
+                    <p>Retaper le Mot de passe : <input type="password" name="mdp2" required></p>
                     <p>E-mail : <input type="email" name="email" value="<?php echo $donnesModify['email']; ?>" required> </p>
                     <p>Avatar: <input type="url" name="avatar" value="<?php echo $donnesModify['avatar']; ?>" required> </p>
+                    <p>Statut: 
+                                <select id="statut" name="statut">
+                                    <option value="<?php echo $donnesModify['statut'];?>"><?php echo $donnesModify['statut'];?></option>
+                                    <option value="En ligne">En ligne</option>
+                                    <option value="Absent">Absent</option>
+                                    <option value="Ne pas déranger">Ne pas déranger</option>
+                                </select>
+                    </p>
                     <button type="submit" name="changevalue" value="changeValueUser">Modifier mon profil</button>
                 </form>
         </fieldset>
@@ -34,6 +42,8 @@
                     $email= filter_var($emailBrut, FILTER_SANITIZE_STRING);
                     $avatarBrut= $_POST['avatar'];
                     $avatar = filter_var($avatarBrut, FILTER_SANITIZE_STRING);
+                    $statutBrut = $_POST['statut'];
+                    $statut = filter_var($statutBrut, FILTER_SANITIZE_STRING);
                     if (empty($_POST["mdp1"])) { 
                         echo "<p>* Veuillez entrer un mot de passe.</p>";
                     }
@@ -54,7 +64,7 @@
                         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         $mdphash = sha1($mdp1);
                     
-                        $sql = "UPDATE utilisateur SET user='$user', email='$email', psw='$mdphash', avatar='$avatar'  WHERE user='$user'";
+                        $sql = "UPDATE utilisateur SET user='$user', email='$email', psw='$mdphash', avatar='$avatar', statut='$statut'  WHERE user='$user'";
                     
                         // Prepare statement
                         $stmt = $bdd->prepare($sql);
@@ -63,8 +73,9 @@
                         $stmt->execute();
                     
                         // echo a message to say the UPDATE succeeded
+                        $_SESSION['statut'] = $statut;
                         echo "<script>alert('Modification effectuée')</script>";
-                        header("Refresh:0");
+                        header ('location: ../../index.php');
                     }
                     }
     }

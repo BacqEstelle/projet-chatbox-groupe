@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -17,6 +18,7 @@
             echo '<img src="'.$_SESSION['avatar'].'" alt="user" style="width: 100px; height: 100px; border-radius: 100px; border: 3px solid pink;"></img>';
             echo '<p>Votre login est '.$_SESSION['login'].'</p>';
             echo 'Votre email est '.$_SESSION['email'].'</p>';
+            echo 'Statut : '.$_SESSION['statut'].'</p>';
             echo '<p><button><a href="assets/inc/logout.php">Déconnection</a></button></p>';
             echo '<p><button><a href="assets/inc/modifyuser.php?id='.$_SESSION['id'].'">Modifier mon compte</a></button></p>';
         }else{
@@ -40,12 +42,19 @@
         <div id="messageAfficher">
         </div>
     </div>
+
+    <button onclick="etoile()">Test</button>
+    <div class="animation">
+    <div class="animationClick"></div>
+    </div>
+    
     <?php include("assets/inc/sendmessage.php");?>
 
     <footer>
 
     </footer>
 <script src="assets/js/refresh.js"></script>
+<script src="assets/js/animation.js"></script>
 
 </body>
 </html>

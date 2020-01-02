@@ -17,6 +17,7 @@ $login_valide = $info['user'];
 $pwd_valide = $info['psw'];
 $email_valide = $info['email'];
 $avatar_valide = $info['avatar'];
+$statut_valide = $info['statut'];
 
 // on teste si nos variables sont définies
 if (isset($_POST['login']) && isset($_POST['pwd'])) {
@@ -33,12 +34,14 @@ if (isset($_POST['login']) && isset($_POST['pwd'])) {
 		$_SESSION['pwd'] = $_POST['pwd'];
 		$_SESSION['email'] = $email_valide;
 		$_SESSION['avatar'] = $avatar_valide;
+		$_SESSION['statut'] = $statut_valide;
 
 		//
 		$online = 'yes';
+		$statut = 'En ligne';
 		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     
-        $sql = "UPDATE utilisateur SET online='$online'WHERE user='$login_valide'";
+        $sql = "UPDATE utilisateur SET online='$online', statut='$statut' WHERE user='$login_valide'";
                     
         // Prepare statement
         $stmt = $bdd->prepare($sql);
@@ -54,7 +57,7 @@ if (isset($_POST['login']) && isset($_POST['pwd'])) {
 		// Le visiteur n'a pas été reconnu comme étant membre de notre site. On utilise alors un petit javascript lui signalant ce fait
 		echo '<body onLoad="alert(\'Utilisateur non reconnu...\')">';
 		// puis on le redirige vers la page d'accueil
-		echo '<meta http-equiv="refresh" content="0;URL=index.php">';
+		header ('location: ../../index.php');
 	}
 }
 else {

@@ -17,9 +17,20 @@ $reponse = $bdd->query("SELECT * FROM utilisateur WHERE online='yes'");
 while ($donnees = $reponse->fetch())
 {
 
-                echo '<div>';
+                echo '<div style="text-align:center;">';
                 echo '<p>'.$donnees['user'].'</p>';
-                echo '<p><img src="'.$donnees['avatar'].'alt="user" style="width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"</img><p>';
+                if($donnees['statut'] === "En ligne"){
+                    echo '<p><img src="'.$donnees['avatar'].'alt="user" style="width: 50px; height: 50px; border-radius: 50px; border: 3px solid green;"</img><p>';
+                    echo '<p>'.$donnees['statut'].'</p>';
+                }
+                if($donnees['statut'] === "Absent"){
+                    echo '<p><img src="'.$donnees['avatar'].'alt="user" style="width: 50px; height: 50px; border-radius: 50px; border: 3px solid orange;"</img><p>';
+                    echo '<p>'.$donnees['statut'].'</p>';
+                }
+                if($donnees['statut'] === "Ne pas déranger"){
+                    echo '<p><img src="'.$donnees['avatar'].'alt="user" style="width: 50px; height: 50px; border-radius: 50px; border: 3px solid red;"</img><p>';
+                    echo '<p>'.$donnees['statut'].'</p>';
+                }
                 echo '</div>';
 
 
