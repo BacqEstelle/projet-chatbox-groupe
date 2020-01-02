@@ -19,33 +19,26 @@
                         echo '<img src="'.$_SESSION['avatar'].'" alt="user" style="width: 100px; height: 100px; border-radius: 100px; border: 3px solid pink;"></img>';
                         echo '<p>Votre login est '.$_SESSION['login'].'</p>';
                         echo 'Votre email est '.$_SESSION['email'].'</p>';
-                        echo '<p><button><a href="assets/inc/logout.php">Déconnection</a></button></p>';
-                        echo '<p><button><a href="assets/inc/modifyuser.php?id='.$_SESSION['id'].'">Modifier mon compte</a></button></p>';
-                }else{
+                        echo '<button><a href="assets/inc/logout.php">Déconnection</a></button>';
+                        echo '<button><a href="assets/inc/modifyuser.php?id='.$_SESSION['id'].'">Modifier mon compte</a></button>';
+                    }else{
                 ?>
-            <h2> Connexion </h2>
-            <form action="assets/inc/login.php" method="post">
-                <label for="login">Login :</label>
-                <input type="text" name="login">
-                <label for="pwd">Mot de passe :</label> 
-                <input type="password" name="pwd">
-                <input type="submit" value="Connexion">
-                <a href="register.php">register ?</a>
-            </form>
-                <?php
-                }
-                ?>
+                <h2> Connexion </h2>
+                <form action="assets/inc/login.php" method="post">
+                    <label for="login">Login :</label>
+                    <input type="text" name="login">
+                    <label for="pwd">Mot de passe :</label> 
+                    <input type="password" name="pwd">
+                    <input type="submit" value="Connexion">
+                    <a href="register.php">register ?</a>
+                </form>
+                    <?php
+                    }
+                    ?>
         </header>
         <div class="content-chat">
             <section id="user">
-            <div class="user-name">
-                <img src="assets/img/index.png" alt="photo">
-                <p>Bouh</p>
-            </div>
-            <div class="user-name">
-                <img src="assets/img/index.png" alt="photo">
-                <p>Bouh</p>
-            </div>
+                <div class="userOnline" id="useronline"></div>
             </section>
             <!-- <section id="chatbox">
                 <div class="text">

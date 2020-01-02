@@ -18,12 +18,8 @@ while ($donnees = $reponse->fetch())
 {
 
                 echo '<div>';
-                echo '<p>'.$donnees['user'].'</p>';
-                echo '<p><img src="'.$donnees['avatar'].'alt="user" style="width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"</img><p>';
+                //echo '<p>'.$donnees['user'].'</p>';
+                echo '<img src="'.$donnees['avatar'].'alt="user" style="width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"</img>';
                 echo '</div>';
 
-
-                
-    
-    
 }

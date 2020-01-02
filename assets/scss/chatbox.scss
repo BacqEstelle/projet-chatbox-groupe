@@ -39,6 +39,26 @@ header {
     }
 }
 
+.content-chat{
+    margin-top: 10px;
+    #user{
+        height: 65px;
+        background-color:#A2BEE8;
+        display: flex;
+        width: 100%;
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        
+        .userOnline{
+            height: 100%;
+            margin: 0 5px 0 5px;
+            display: flex;
+            align-items: center;
+        }
+
+    }
+}
 
 
 

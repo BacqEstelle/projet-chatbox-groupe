@@ -38,3 +38,4 @@ function refresh_User() {
     xmlhttp.open("POST", "assets/inc/checkuser.php", true);
     xmlhttp.send();
 }
+
