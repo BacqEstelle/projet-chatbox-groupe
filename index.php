@@ -10,9 +10,14 @@
 </head>
 <body>
     <header>
-        <h2>Utilisateur en ligne</h2>
-        <div class="userOnline" id="useronline"></div>
-        <h2>Votre profil</h2>
+        <button type="button" class="collapsible">Utilisateur en ligne</button>
+        <div class="content">
+            <div class="userOnline" id="useronline"></div>
+        </div>
+        
+        <button type="button" class="collapsible">Votre Profil</button>
+        <div class="content">
+
         <?php
         if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
             echo '<img src="'.$_SESSION['avatar'].'" alt="user" style="width: 100px; height: 100px; border-radius: 100px; border: 3px solid pink;"></img>';
@@ -23,6 +28,8 @@
             echo '<p><button><a href="assets/inc/modifyuser.php?id='.$_SESSION['id'].'">Modifier mon compte</a></button></p>';
         }else{
         ?>
+        
+
         <h2> Connexion </h2>
         <form action="assets/inc/login.php" method="post">
         <span>Votre login : <input type="text" name="login">
@@ -34,16 +41,20 @@
         <?php
         }
         ?>
+        </div>
     </header>
 
 
     <h2>Message</h2>
-    <div class="content"  style="overflow-x:scroll; height:300px;">
+    <div class="message"  style="overflow-x:scroll; height:300px;">
         <div id="messageAfficher">
         </div>
     </div>
+    <audio controls id="linkAudio">
+    <source src="assets/sounds/0920.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
 
-    <button onclick="etoile()">Test</button>
     <div class="animation">
     <div class="animationClick"></div>
     </div>
@@ -53,8 +64,23 @@
     <footer>
 
     </footer>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
 <script src="assets/js/refresh.js"></script>
 <script src="assets/js/animation.js"></script>
-
 </body>
 </html>

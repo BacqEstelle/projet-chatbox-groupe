@@ -4,7 +4,7 @@
 // Creation de la fonction envoi du message
 function sendMessage(){
             // formatage en html et creation des divers éléments du formulaire
-            echo '<form class="add" action="index.php" method="post">';
+            echo '<form class="add" action="" method="post">';
             echo 'Votre message : <input type="textarea" name="messageToSend" style="width:85%;" >';
             echo '<button type="submit" name="addMessage" value="addMessage">Envoyer</button>';
             echo '</form>';
@@ -37,6 +37,14 @@ function sendMessage(){
                     // function refresh qui ne fonctionne pas après 5-7 envoi de message
                     // CF : fonction ajax en js => assets/js/refresh.js
                         // header ('refresh: 3');
+                        echo '<script>
+                            let animationTime = setInterval(function() {
+                            animation();
+                            clearInterval(animationTime);
+                            }, 500);
+
+                        
+                            </script>';
                 
                 }
 

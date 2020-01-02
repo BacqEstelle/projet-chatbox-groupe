@@ -1,11 +1,11 @@
 setInterval(function() { // met a jour toute les secondes la function refresh_Messages();
     refresh_Messages();
-}, 1000);
+}, 500);
 
 
 setInterval(function() { // met a jour toute les secondes la function refresh_Messages();
     refresh_User();
-}, 1000);
+}, 3000);
 
 function refresh_Messages() {
     var xmlhttp;
@@ -22,6 +22,7 @@ function refresh_Messages() {
     xmlhttp.open("POST", "assets/inc/readmessage.php", true);
     xmlhttp.send();
 }
+
 
 function refresh_User() {
     var xmlhttp;
