@@ -1,4 +1,101 @@
-.animation {
+body {
+  margin: 0 auto;
+  background-color: #c9e8f8;
+}
+
+.integral {
+  position: relative;
+}
+
+.integral .button {
+  margin-left: 1%;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 15vh;
+  height: 7vh;
+  border: none;
+  outline: none;
+  color: black;
+  background: #e5c0eb;
+  cursor: url(http://www.rw-designer.com/cursor-extern.php?id=131642), auto;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.integral .button img {
+  margin-top: 5%;
+}
+
+.integral .button:before {
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  -webkit-animation: glowing 20s linear infinite;
+          animation: glowing 20s linear infinite;
+  opacity: 0;
+  -webkit-transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+.integral .button:active {
+  color: #e5c0eb;
+}
+
+.integral .button:active:after {
+  background: transparent;
+}
+
+.integral .button:hover:before {
+  opacity: 1;
+}
+
+.integral .button:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #7a00ff;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@-webkit-keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.integral .animation {
   position: absolute;
   opacity: 0;
   -webkit-transform: translateY(-150%);
@@ -6,7 +103,7 @@
   margin-left: 65%;
 }
 
-.animation .animationClick {
+.integral .animation .animationClick {
   background-image: url(../img/etoile.gif);
   background-size: 60%;
   background-position: 50% 50%;
@@ -16,8 +113,23 @@
   z-index: 10;
 }
 
-.collapsible {
-  background-color: #777;
+.integral header .violet {
+  background-color: #a7759c;
+}
+
+.integral header .violet:hover {
+  background-color: #ee83e5;
+}
+
+.integral header .pink {
+  background-color: #7a00ff;
+}
+
+.integral header .pink:hover {
+  background-color: #ff00ea;
+}
+
+.integral header .collapsible {
   color: white;
   cursor: pointer;
   padding: 18px;
@@ -28,19 +140,133 @@
   font-size: 15px;
 }
 
-.content {
+.integral header .collapsible img {
+  width: 40px;
+  height: 40px;
+}
+
+.integral header .content {
   padding: 0 18px;
   display: none;
   overflow: hidden;
-  background-color: #f1f1f1;
+  background-color: #c9e8f8;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  width: 100%;
 }
 
-.active,
-.collapsible:hover {
-  background-color: #555;
+.integral header .content img {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid pink;
 }
 
-audio {
+.integral header .content .checkUser {
+  text-align: center;
+  margin-right: 1%;
+}
+
+.integral header .content .userOnline {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.integral audio {
   display: none;
+}
+
+@-moz-document url-prefix() {
+  .integral .message {
+    scrollbar-width: none;
+  }
+}
+
+.integral .message {
+  margin-top: 1%;
+  overflow: scroll;
+  height: 65vh;
+}
+
+.integral .message::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.integral .add {
+  background-color: #a7759c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin-top: 2%;
+  padding-left: 2%;
+}
+
+.integral .add textarea {
+  background-color: #c9e8f8;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  resize: none;
+  width: 90%;
+  height: 15%;
+}
+
+.integral .add .sendMessage {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 1%;
+  width: 80%;
+  min-height: 50%;
+}
+
+.textGauche {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #ff00ea;
+  margin-left: 1%;
+  margin-right: 1%;
+  border-bottom: 2px solid #7a00ff;
+}
+
+.textGauche button {
+  margin-left: auto;
+  max-height: 30px;
+}
+
+.textGauche .textGaucheContent {
+  width: 100%;
+}
+
+.textDroite {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #7a00ff;
+  margin-left: 1%;
+  margin-right: 1%;
+  border-bottom: 2px solid #ff00ea;
+}
+
+.textDroite button {
+  margin-left: auto;
+  max-height: 30px;
+}
+
+.textDroite .textGaucheContent {
+  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */

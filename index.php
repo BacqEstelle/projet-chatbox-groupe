@@ -5,41 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Document</title>
+    <title>ChatBox</title>
 </head>
 <body>
+<div class="integral">
     <header>
         <!-- Collapse Utilisateur en ligne -->
-        <button type="button" class="collapsible">Utilisateur en ligne</button>
+        <button type="button" class="collapsible pink"><img src="assets/img/chat.gif"> Utilisateur en ligne</button>
         <div class="content">
             <div class="userOnline" id="useronline"></div>
         </div>
               <!-- Collapse Profil Utilisateur -->
         <?php
         if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
-            echo '<button type="button" class="collapsible">Votre Profil</button>';
+            echo '<button type="button" class="collapsible violet"><img src="assets/img/chat-2.gif"> Votre Profil</button>';
             echo '<div class="content">';
-            echo '<img src="'.$_SESSION['avatar'].'" alt="user" style="width: 100px; height: 100px; border-radius: 100px; border: 3px solid pink;"></img>';
+            echo '<img src="'.$_SESSION['avatar'].'" alt="user"></img>';
             echo '<p>Votre login est '.$_SESSION['login'].'</p>';
             echo '<p>Votre email est '.$_SESSION['email'].'</p>';
             echo '<p>Statut : '.$_SESSION['statut'].'</p>';
             echo '<p>Grade : '.$_SESSION['grade'].'</p>';
-            echo '<p><button><a href="assets/inc/logout.php">Déconnection</a></button></p>';
-            echo '<p><button><a href="assets/inc/modifyuser.php?id='.$_SESSION['id'].'">Modifier mon compte</a></button></p>';
+            echo '<span><a href="assets/inc/logout.php"><button  value="Déconnection">Déconnection</button></a></span>';
+            echo '  ';
+            echo '<span><a href="assets/inc/modifyuser.php?id='.$_SESSION['id'].'"><button>Modifier mon compte</button></a></span>';
             echo '</div>';
         }else{
         ?>
         
         <!-- Collapse Connection -->
-        <button type="button" class="collapsible">Connexion</button>
+        <button type="button" class="collapsible violet"><img src="assets/img/chat-3.gif">Connexion</button>
         <div class="content">
         <h2> Connexion </h2>
         <form action="assets/inc/login.php" method="post">
         <span>Votre login : <input type="text" name="login">
         Votre mot de passé : <input type="password" name="pwd"></span>
-
-        <p><a href="register.php">register ?</a></p>
         <p><input type="submit" value="Connexion"></p>
         </form>
         </div>
@@ -48,7 +49,7 @@
 
         <!-- Collapse Enregistrement  -->
         
-        <button type="button" class="collapsible">Enregistrement</button>
+        <button type="button" class="collapsible pink"><img src="assets/img/chat-4.gif">Enregistrement</button>
         <div class="content">
         <?php 
           include('assets/inc/register.php');
@@ -58,9 +59,7 @@
 
     </header>
 
-
-    <h2>Message</h2>
-    <div class="message"  style="overflow-x:scroll; height:300px;">
+    <div class="message">
         <div id="messageAfficher">
         </div>
     </div>
@@ -73,19 +72,22 @@
     <div class="animationClick"></div>
     </div>
     
+    <div class="sendMessage">
     <?php include("assets/inc/sendmessage.php");?>
+    </div>
 
     <footer>
 
     </footer>
+</div>
 <script>
-var coll = document.getElementsByClassName("collapsible");
+let coll = document.getElementsByClassName("collapsible");
 var i;
 
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
-    var content = this.nextElementSibling;
+    let content = this.nextElementSibling;
     if (content.style.display === "block") {
       content.style.display = "none";
     } else {

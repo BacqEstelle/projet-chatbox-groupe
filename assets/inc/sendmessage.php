@@ -5,8 +5,8 @@
 function sendMessage(){
             // formatage en html et creation des divers éléments du formulaire
             echo '<form class="add" action="" method="post">';
-            echo 'Votre message : <input type="textarea" name="messageToSend" style="width:85%;" >';
-            echo '<button type="submit" name="addMessage" value="addMessage">Envoyer</button>';
+            echo '<textarea name="messageToSend" placeholder="Veuillez taper dans le chat ... mais pas trop fort ..."></textarea>';
+            echo '<button class="button" type="submit" name="addMessage" value="addMessage"><img src="assets/img/send.png"></img></button>';
             echo '</form>';
 
         try

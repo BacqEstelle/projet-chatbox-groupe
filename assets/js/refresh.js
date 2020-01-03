@@ -6,6 +6,7 @@ setInterval(function() { // met a jour toute les secondes la function refresh_Me
 setInterval(function() { // met a jour toute les secondes la function refresh_Messages();
     refresh_User();
 }, 3000);
+refresh_Messages();
 
 function refresh_Messages() {
     var xmlhttp;
