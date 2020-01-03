@@ -27,7 +27,7 @@
             echo '<p>Votre email est '.$_SESSION['email'].'</p>';
             echo '<p>Statut : '.$_SESSION['statut'].'</p>';
             echo '<p>Grade : '.$_SESSION['grade'].'</p>';
-            echo '<span><a href="assets/inc/logout.php"><button  value="Déconnection">Déconnection</button></a></span>';
+            echo '<span><a href="assets/inc/logout.php"><button  value="Déconnection">Déconnexion</button></a></span>';
             echo '  ';
             echo '<span><a href="assets/inc/modifyuser.php?id='.$_SESSION['id'].'"><button>Modifier mon compte</button></a></span>';
             echo '</div>';
@@ -39,8 +39,8 @@
         <div class="content">
         <h2> Connexion </h2>
         <form action="assets/inc/login.php" method="post">
-        <span>Votre login : <input type="text" name="login">
-        Votre mot de passé : <input type="password" name="pwd"></span>
+        <p><label for="login">Votre login :</label> <input type="text" name="login"></p>
+        <label for="mdp">Votre mot de passe :</label> <input type="password" name="pwd">
         <p><input type="submit" value="Connexion"></p>
         </form>
         </div>

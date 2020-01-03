@@ -45,7 +45,7 @@
                     $avatar = filter_var($avatarBrut, FILTER_SANITIZE_STRING);
                     $statutBrut = $_POST['statut'];
                     $statut = filter_var($statutBrut, FILTER_SANITIZE_STRING);
-                    $grade = $donnesModify['id'];
+                    $grade = $donnesModify['grade'];
                     if (empty($_POST["mdp1"])) { 
                         echo "<p>* Veuillez entrer un mot de passe.</p>";
                     }
