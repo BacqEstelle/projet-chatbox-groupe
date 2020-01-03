@@ -5,8 +5,7 @@
 function sendMessage(){
             // formatage en html et creation des divers éléments du formulaire
             echo '<form class="add" action="index.php" method="post">';
-            echo '<p>Message : <input type="textarea" name="messageToSend"></p>';
-
+            echo '<textarea type="textarea" name="messageToSend"></textarea>';
             echo '<button type="submit" name="addMessage" value="addMessage">Envoyer</button>';
             echo '</form>';
 

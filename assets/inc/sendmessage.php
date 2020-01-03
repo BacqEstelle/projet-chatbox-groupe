@@ -5,8 +5,8 @@
 function sendMessage(){
             // formatage en html et creation des divers éléments du formulaire
             echo '<form class="add" action="index.php" method="post">';
-            echo 'Votre message : <input type="textarea" name="messageToSend" style="width:85%;" >';
-            echo '<button type="submit" name="addMessage" value="addMessage">Envoyer</button>';
+            echo    '<textarea placeholder="Entrer un message" name="messageToSend"></textarea>';
+            echo    '<button type="submit" name="addMessage" value="addMessage"><img src="assets/img/icone.png"></button>';
             echo '</form>';
 
         try
@@ -52,5 +52,5 @@ function sendMessage(){
     if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
         sendMessage();
         }else{
-            echo "Veuillez vous connecter, pour écrire un message";
+            echo "<p>Veuillez vous connecter, pour écrire un message</p>";
         }

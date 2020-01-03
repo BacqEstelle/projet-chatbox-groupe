@@ -61,6 +61,26 @@ header {
 }
 
 
+#chatbox{
+    .text{
+      width: 100%;
+      .add{
+        display: flex;
+        justify-content: space-between;
+        textarea{
+            width: 100%;
+            resize: none;
+        }
+        button{
+            padding: 5px;
+            border: none;
+            box-sizing: border-box;
+            background-color: #CEBFFF;
+        }
+      }
+    }
+}
+
 
 // .container {
 //     background-color:#003333;

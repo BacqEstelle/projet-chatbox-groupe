@@ -83,4 +83,30 @@ header form input {
       -ms-flex-align: center;
           align-items: center;
 }
+
+#chatbox .text {
+  width: 100%;
+}
+
+#chatbox .text .add {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#chatbox .text .add textarea {
+  width: 100%;
+  resize: none;
+}
+
+#chatbox .text .add button {
+  padding: 5px;
+  border: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #CEBFFF;
+}
 /*# sourceMappingURL=chatbox.css.map */
