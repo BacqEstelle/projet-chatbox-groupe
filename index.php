@@ -10,26 +10,30 @@
 </head>
 <body>
     <header>
+        <!-- Collapse Utilisateur en ligne -->
         <button type="button" class="collapsible">Utilisateur en ligne</button>
         <div class="content">
             <div class="userOnline" id="useronline"></div>
         </div>
-        
-        <button type="button" class="collapsible">Votre Profil</button>
-        <div class="content">
-
+              <!-- Collapse Profil Utilisateur -->
         <?php
         if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
+            echo '<button type="button" class="collapsible">Votre Profil</button>';
+            echo '<div class="content">';
             echo '<img src="'.$_SESSION['avatar'].'" alt="user" style="width: 100px; height: 100px; border-radius: 100px; border: 3px solid pink;"></img>';
             echo '<p>Votre login est '.$_SESSION['login'].'</p>';
-            echo 'Votre email est '.$_SESSION['email'].'</p>';
-            echo 'Statut : '.$_SESSION['statut'].'</p>';
+            echo '<p>Votre email est '.$_SESSION['email'].'</p>';
+            echo '<p>Statut : '.$_SESSION['statut'].'</p>';
+            echo '<p>Grade : '.$_SESSION['grade'].'</p>';
             echo '<p><button><a href="assets/inc/logout.php">Déconnection</a></button></p>';
             echo '<p><button><a href="assets/inc/modifyuser.php?id='.$_SESSION['id'].'">Modifier mon compte</a></button></p>';
+            echo '</div>';
         }else{
         ?>
         
-
+        <!-- Collapse Connection -->
+        <button type="button" class="collapsible">Connexion</button>
+        <div class="content">
         <h2> Connexion </h2>
         <form action="assets/inc/login.php" method="post">
         <span>Votre login : <input type="text" name="login">
@@ -38,10 +42,20 @@
         <p><a href="register.php">register ?</a></p>
         <p><input type="submit" value="Connexion"></p>
         </form>
-        <?php
+        </div>
+
+
+
+        <!-- Collapse Enregistrement  -->
+        
+        <button type="button" class="collapsible">Enregistrement</button>
+        <div class="content">
+        <?php 
+          include('assets/inc/register.php');
         }
         ?>
-        </div>
+        
+
     </header>
 
 

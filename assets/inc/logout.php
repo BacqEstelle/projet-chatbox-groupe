@@ -3,6 +3,8 @@
 session_start ();
 // Pour modifier la valeur connect
 include('bdd.php');
+
+// Modifier la valeur statut dans la bdd 
 $online = 'no';
 $user = $_SESSION['login'];
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

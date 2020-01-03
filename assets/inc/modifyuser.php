@@ -26,6 +26,7 @@
                                     <option value="Ne pas déranger">Ne pas déranger</option>
                                 </select>
                     </p>
+                    <p>Grade: <?php echo $donnesModify['grade'];?></p>
                     <button type="submit" name="changevalue" value="changeValueUser">Modifier mon profil</button>
                 </form>
         </fieldset>
@@ -44,6 +45,7 @@
                     $avatar = filter_var($avatarBrut, FILTER_SANITIZE_STRING);
                     $statutBrut = $_POST['statut'];
                     $statut = filter_var($statutBrut, FILTER_SANITIZE_STRING);
+                    $grade = $donnesModify['id'];
                     if (empty($_POST["mdp1"])) { 
                         echo "<p>* Veuillez entrer un mot de passe.</p>";
                     }
@@ -64,7 +66,7 @@
                         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         $mdphash = sha1($mdp1);
                     
-                        $sql = "UPDATE utilisateur SET user='$user', email='$email', psw='$mdphash', avatar='$avatar', statut='$statut'  WHERE user='$user'";
+                        $sql = "UPDATE utilisateur SET user='$user', email='$email', psw='$mdphash', avatar='$avatar', statut='$statut', grade='$grade'  WHERE user='$user'";
                     
                         // Prepare statement
                         $stmt = $bdd->prepare($sql);
@@ -74,6 +76,7 @@
                     
                         // echo a message to say the UPDATE succeeded
                         $_SESSION['statut'] = $statut;
+                        $_SESSION['email'] = $email;
                         echo "<script>alert('Modification effectuée')</script>";
                         header ('location: ../../index.php');
                     }

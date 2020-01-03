@@ -1,4 +1,5 @@
 <?php
+session_start();
 try
 {
 	// On se connecte à MySQL
@@ -51,38 +52,105 @@ function smiley($messageSmiley){
 while ($donnees = $reponse->fetch())
 {
     $dateRecup = $donnees['date'];
-    $date = date("d/m/Y à h:m:s", strtotime($dateRecup));
+    $date = date("d/m/Y à H:i:s", strtotime($dateRecup));
     // activation de la fonction smiley
     $messageSmiley = $donnees['message'];
     // permet de selectionner les id pair
     if ($donnees['id']%2 ==1){
             // affichage des différents éléments contenu dans la base de données avec un formatage html
-            echo '<fieldset class="textGauche" style="color: blue; text-align: left;">';
-            echo '<div>';
-            echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
-            echo '<strong  style="margin-left:2%; margin-top: 15%; font-size: 20px;">'.$donnees["user"].'  </strong>';
-            echo '<span  style="margin-right: 2%; margin-top: 15%; font-size: 12px;"> envoyé le '.$date.'</span>';
-            echo '</div>';
-            echo '</p>';
-            echo '<p>';
-            echo '<strong>Message : </strong>'.smiley($messageSmiley).'';
-            echo '</p>';
-            echo '</fieldset>';
+            if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
+                $grade = $_SESSION['grade'];
+                if($grade == "Admin"){
+                    echo '<fieldset class="textGauche" style="color: blue; text-align: left;">';
+                    echo '<div style="float: right;">';
+                    echo '<button><a href="assets/inc/resetmessage.php?id='.$donnees['id'].'">Reset</a></button>';
+                    echo '</div>';
+                    echo '<div>';
+                    echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
+                    echo '<strong  style="margin-left:2%; margin-top: 15%; font-size: 20px;">'.$donnees["user"].'  </strong>';
+                    echo '<span  style="margin-right: 2%; margin-top: 15%; font-size: 12px;"> envoyé le '.$date.'</span>';
+                    echo '</div>';
+                    echo '</p>';
+                    echo '<p>';
+                    echo '<strong>Message : </strong>'.smiley($messageSmiley).'';
+                    echo '</p>';
+                    echo '</fieldset>';
+                }else{
+                    echo '<fieldset class="textGauche" style="color: blue; text-align: left;">';
+                    echo '<div>';
+                    echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
+                    echo '<strong  style="margin-left:2%; margin-top: 15%; font-size: 20px;">'.$donnees["user"].'  </strong>';
+                    echo '<span  style="margin-right: 2%; margin-top: 15%; font-size: 12px;"> envoyé le '.$date.'</span>';
+                    echo '</div>';
+                    echo '</p>';
+                    echo '<p>';
+                    echo '<strong>Message : </strong>'.smiley($messageSmiley).'';
+                    echo '</p>';
+                    echo '</fieldset>';
+                }
+                
+            }else{
+                echo '<fieldset class="textGauche" style="color: blue; text-align: left;">';
+                echo '<div>';
+                echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
+                echo '<strong  style="margin-left:2%; margin-top: 15%; font-size: 20px;">'.$donnees["user"].'  </strong>';
+                echo '<span  style="margin-right: 2%; margin-top: 15%; font-size: 12px;"> envoyé le '.$date.'</span>';
+                echo '</div>';
+                echo '</p>';
+                echo '<p>';
+                echo '<strong>Message : </strong>'.smiley($messageSmiley).'';
+                echo '</p>';
+                echo '</fieldset>';
+            }
 
     }else{
             // si l'id recu de la bdd est impair
             // affichage des différents éléments contenu dans le tableau message 
-            echo '<fieldset class="textDroite" style="color: red; text-align:right;">';
-            echo '<div>';
-            echo '<strong  style="margin-top: 15%; font-size: 20px;">'.$donnees["user"].'  </strong>';
-            echo '<span  style="margin-right: 2%; margin-top: 15%; font-size: 12px;"> envoyé le '.$date.'</span>';
-            echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
-            echo '</div>';
-            echo '</p>';
-            echo '<p>';
-            echo '<strong>Message : </strong>'.smiley($messageSmiley).'';
-            echo '</p>';
-            echo '</fieldset>';
+            if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
+                $grade = $_SESSION['grade'];
+                if($grade == "Admin"){
+                    echo '<fieldset class="textDroite" style="color: red; text-align:right;">';
+                    echo '<div style="float: left;">';
+                    echo '<button><a href="assets/inc/resetmessage.php?id='.$donnees['id'].'">Reset</a></button>';
+                    echo '</div>';
+                    echo '<div>';
+                    echo '<strong  style="margin-top: 15%; font-size: 20px;">'.$donnees["user"].'  </strong>';
+                    echo '<span  style="margin-right: 2%; margin-top: 15%; font-size: 12px;"> envoyé le '.$date.'</span>';
+                    echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
+                    echo '</div>';
+                    echo '</p>';
+                    echo '<p>';
+                    echo '<strong>Message : </strong>'.smiley($messageSmiley).'';
+                    echo '</p>';
+                    echo '</fieldset>';
+                
+                }else{
+                    echo '<fieldset class="textDroite" style="color: red; text-align:right;">';
+                    echo '<div>';
+                    echo '<strong  style="margin-top: 15%; font-size: 20px;">'.$donnees["user"].'  </strong>';
+                    echo '<span  style="margin-right: 2%; margin-top: 15%; font-size: 12px;"> envoyé le '.$date.'</span>';
+                    echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
+                    echo '</div>';
+                    echo '</p>';
+                    echo '<p>';
+                    echo '<strong>Message : </strong>'.smiley($messageSmiley).'';
+                    echo '</p>';
+                    echo '</fieldset>';
+                }
+                
+            }else{
+                echo '<fieldset class="textDroite" style="color: red; text-align:right;">';
+                echo '<div>';
+                echo '<strong  style="margin-top: 15%; font-size: 20px;">'.$donnees["user"].'  </strong>';
+                echo '<span  style="margin-right: 2%; margin-top: 15%; font-size: 12px;"> envoyé le '.$date.'</span>';
+                echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
+                echo '</div>';
+                echo '</p>';
+                echo '<p>';
+                echo '<strong>Message : </strong>'.smiley($messageSmiley).'';
+                echo '</p>';
+                echo '</fieldset>';
+            }
 
                 
     }

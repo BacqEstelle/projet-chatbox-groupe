@@ -18,6 +18,7 @@ $pwd_valide = $info['psw'];
 $email_valide = $info['email'];
 $avatar_valide = $info['avatar'];
 $statut_valide = $info['statut'];
+$grade_valide = $info['grade'];
 
 // on teste si nos variables sont définies
 if (isset($_POST['login']) && isset($_POST['pwd'])) {
@@ -35,6 +36,7 @@ if (isset($_POST['login']) && isset($_POST['pwd'])) {
 		$_SESSION['email'] = $email_valide;
 		$_SESSION['avatar'] = $avatar_valide;
 		$_SESSION['statut'] = $statut_valide;
+		$_SESSION['grade'] = $grade_valide;
 
 		//
 		$online = 'yes';
