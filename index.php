@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>ChatBox</title>
@@ -13,7 +14,7 @@
 <div class="integral">
     <header>
         <!-- Collapse Utilisateur en ligne -->
-        <button type="button" class="collapsible pink"><img src="assets/img/chat.gif"> Utilisateur en ligne</button>
+        <button type="button" class="collapsible pink"><img src="assets/img/chat.gif"> Utilisateur en ligne (<div id="userOnlineDisplay"></div>)</button>
         <div class="content">
             <div class="userOnline" id="useronline"></div>
         </div>
@@ -22,6 +23,7 @@
         if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
             echo '<button type="button" class="collapsible violet"><img src="assets/img/chat-2.gif"> Votre Profil</button>';
             echo '<div class="content">';
+            echo '<div class="content-profil">';
             echo '<img src="'.$_SESSION['avatar'].'" alt="user"></img>';
             echo '<p>Votre login est '.$_SESSION['login'].'</p>';
             echo '<p>Votre email est '.$_SESSION['email'].'</p>';
@@ -31,31 +33,33 @@
             echo '  ';
             echo '<span><a href="assets/inc/modifyuser.php?id='.$_SESSION['id'].'"><button>Modifier mon compte</button></a></span>';
             echo '</div>';
+            echo '</div>';
         }else{
         ?>
         
         <!-- Collapse Connection -->
         <button type="button" class="collapsible violet"><img src="assets/img/chat-3.gif">Connexion</button>
         <div class="content">
-        <h2> Connexion </h2>
-        <form action="assets/inc/login.php" method="post">
-        <p><label for="login">Votre login :</label> <input type="text" name="login"></p>
-        <label for="mdp">Votre mot de passe :</label> <input type="password" name="pwd">
-        <p><input type="submit" value="Connexion"></p>
-        </form>
+          <div class="content-connexion">
+            <form action="assets/inc/login.php" class="connexion-form" method="post">
+              <label for="login">Votre login :</label> <input type="text" name="login" placeholder="Username">
+              <label for="mdp">Votre mot de passe :</label> <input type="password" name="pwd" placeholder="Password">
+              <button type="submit" value="Connexion">Connexion</button>
+            </form>
+          </div>
         </div>
 
 
 
         <!-- Collapse Enregistrement  -->
         
-        <button type="button" class="collapsible pink"><img src="assets/img/chat-4.gif">Enregistrement</button>
-        <div class="content">
+        <button type="button" class="collapsible fuschia"><img src="assets/img/chat-4.gif">Enregistrement</button>
+        <div class="content-register">
         <?php 
           include('assets/inc/register.php');
         }
         ?>
-        
+        </div>
 
     </header>
 
@@ -72,12 +76,11 @@
     <div class="animationClick"></div>
     </div>
     
-    <div class="sendMessage">
-    <?php include("assets/inc/sendmessage.php");?>
-    </div>
-
+    
     <footer>
-
+      <div class="sendMessage">
+        <?php include("assets/inc/sendmessage.php");?>
+      </div>
     </footer>
 </div>
 <script>

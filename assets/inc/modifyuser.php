@@ -10,26 +10,41 @@
         $donnesModify = $reponseModify->fetch();
         $idFinal = $donnesModify['user'];
         ?>
-        <fieldset>
-                <form class="changevalue" action="modifyuser.php?id=<?php echo $donnesModify['id']; ?>" method="POST">
-                    <p>ID: <?php echo $donnesModify['id'];?></p>
-                    <p>Pseudo : <?php echo $donnesModify['user']; ?></p>
-                    <p>Mot de passe : <input type="password" name="mdp1" required></p>
-                    <p>Retaper le Mot de passe : <input type="password" name="mdp2" required></p>
-                    <p>E-mail : <input type="email" name="email" value="<?php echo $donnesModify['email']; ?>" required> </p>
-                    <p>Avatar: <input type="url" name="avatar" value="<?php echo $donnesModify['avatar']; ?>" required> </p>
-                    <p>Statut: 
-                                <select id="statut" name="statut">
-                                    <option value="<?php echo $donnesModify['statut'];?>"><?php echo $donnesModify['statut'];?></option>
-                                    <option value="En ligne">En ligne</option>
-                                    <option value="Absent">Absent</option>
-                                    <option value="Ne pas déranger">Ne pas déranger</option>
-                                </select>
-                    </p>
-                    <p>Grade: <?php echo $donnesModify['grade'];?></p>
+        <!DOCTYPE html>
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <link rel="stylesheet" href="../css/normalize.css">
+                <link rel="stylesheet" href="../css/style.css">
+                <title>ChatBox</title>
+            </head>
+        <body>
+        <div class="integral">
+            <form class="changevalue" action="modifyuser.php?id=<?php echo $donnesModify['id']; ?>" method="POST">
+                <label>ID:</label>
+                <p> <?php echo $donnesModify['id'];?></p>
+                <label>Pseudo :</label>
+                <p> <?php echo $donnesModify['user']; ?></p>
+                <label for="mdp1">Mot de passe :</label> 
+                <input type="password" name="mdp1" placeholder="Password" required>
+                <label for="mdp2">Retaper le Mot de passe :</label> 
+                <input type="password" placeholder="Password" name="mdp2" required>
+                <label for="mail">E-mail :</label> 
+                <input type="email" name="email" placeholder="Mail" value="<?php echo $donnesModify['email']; ?>" required> 
+                <label for="avatar">Avatar:</label> 
+                <input type="url" name="avatar" placeholder="Url" value="<?php echo $donnesModify['avatar']; ?>" required> 
+                <label for="statut">Statut:</label> 
+                <select id="statut" name="statut">
+                    <option value="<?php echo $donnesModify['statut'];?>"><?php echo $donnesModify['statut'];?></option>
+                    <option value="En ligne">En ligne</option>
+                    <option value="Absent">Absent</option>
+                    <option value="Ne pas déranger">Ne pas déranger</option>
+                </select>
+                    <label>Grade:</label> <p><?php echo $donnesModify['grade'];?></p>
                     <button type="submit" name="changevalue" value="changeValueUser">Modifier mon profil</button>
-                </form>
-        </fieldset>
+            </form>
         <?php
             if ( $_SERVER["REQUEST_METHOD"] == "POST" AND isset($_POST["changevalue"]) ) {
 
@@ -90,3 +105,6 @@
 }else{
     echo "Vous devez être connecté pour avoir accès a cette page";
 }
+?>
+    </div>
+</body>

@@ -100,5 +100,8 @@ function sendMessage()
 if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
     sendMessage();
 } else {
-    echo "Veuillez vous connecter, pour écrire un message";
+    echo'<div class="noconnect">';
+    echo'<img src="assets/img/connect.gif" alt="licorne">';
+    echo '<p>Veuillez vous connecter, pour écrire un message</p>';
+    echo '</div>';
 }
