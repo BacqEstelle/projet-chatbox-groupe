@@ -69,22 +69,6 @@ function sendMessage()
                         'avatarlili' => $avatarlili,
                     ));    
                 }
-            // Salut lili
-                if($message == "Salut Lili !" ){
-
-                    $userlili = "Lili la licorne";
-                    $avatarlili = 'assets/img/lili.gif';
-                    $datelili = date("Y-m-d H:i:s");
-                    $messagelili = "Salut $name !";
-
-                    $req = $bdd->prepare('INSERT INTO message(user, date, message, avatar) VALUES(:userlili, :datelili, :messagelili, :avatarlili)');
-                    $req->execute(array(
-                        'userlili' => $userlili,
-                        'datelili' => $datelili,
-                        'messagelili' => '<p>' . $messagelili . '</p>',
-                        'avatarlili' => $avatarlili,
-                    ));    
-                }
             // je t'aime lili
             if($message == "Je t aime Lili !" ){
 
