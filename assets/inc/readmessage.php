@@ -16,6 +16,7 @@ $reponse = $bdd->query('SELECT * FROM message ORDER By id desc');
 function smiley($messageSmiley){
     // creation d'un tableau avec les symboles
     $entre=array(
+    // Smiley
         ":)",
         ":D",
         ":p",
@@ -28,10 +29,20 @@ function smiley($messageSmiley){
         "#omg",
         "#drool",
         "#sob",
+    // Insulte
+        "merde",
+        "putain",
+        "salope",
+        "connard",
+        "connasse",
+        "bite",
+        "enculé",
+
 
     );
     // creation d'un tableau qui remplacera les symboles par des images
     $sortie=array (
+    // smiley
         '<img src="assets/img/smiley/:).png" alt="Smiley joyeux" style="width: 50px; height: 50px">',
         '<img src="assets/img/smiley/:D.png" alt="Smiley mdr" style="width: 50px; height: 50px">',
         '<img src="assets/img/smiley/:p.png" alt="Smiley langue" style="width: 50px; height: 50px">',
@@ -44,6 +55,16 @@ function smiley($messageSmiley){
         '<img src="assets/img/smiley/omg.png" alt="Smiley ha" style="width: 50px; height: 50px">',
         '<img src="assets/img/smiley/drool.png" alt="Smiley ha" style="width: 50px; height: 50px">',
         '<img src="assets/img/smiley/sob.png" alt="Smiley sob" style="width: 50px; height: 50px">',
+    // Insultes
+        '<img src="assets/img/insulte.gif" style="width: 100px; height: 150px"><p>*a tué une licorne, en utilisant un langage lexical non approprié*</p>',
+        '<img src="assets/img/insulte.gif" style="width: 100px; height: 150px"><p>*a tué une licorne, en utilisant un langage lexical non approprié*</p>',
+        '<img src="assets/img/insulte.gif" style="width: 100px; height: 150px"><p>*a tué une licorne, en utilisant un langage lexical non approprié*</p>',
+        '<img src="assets/img/insulte.gif" style="width: 100px; height: 150px"><p>*a tué une licorne, en utilisant un langage lexical non approprié*</p>',
+        '<img src="assets/img/insulte.gif" style="width: 100px; height: 150px"><p>*a tué une licorne, en utilisant un langage lexical non approprié*</p>',
+        '<img src="assets/img/insulte.gif" style="width: 100px; height: 150px"><p>*a tué une licorne, en utilisant un langage lexical non approprié*</p>',
+        '<img src="assets/img/insulte.gif" style="width: 100px; height: 150px"><p>*a tué une licorne, en utilisant un langage lexical non approprié*</p>',
+    
+    
     );
     // function permettant de remplacer une entrée par une sortie 
     return str_replace($entre,$sortie,$messageSmiley);
@@ -54,16 +75,17 @@ while ($donnees = $reponse->fetch())
     $dateRecup = $donnees['date'];
     $date = date("d/m/Y à H:i:s", strtotime($dateRecup));
     // activation de la fonction smiley
+    $userBan = $donnees["user"];
     $messageSmiley = $donnees['message'];
     // permet de selectionner les id pair
     if ($donnees['id']%2 ==1){
             // affichage des différents éléments contenu dans la base de données avec un formatage html
             if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
                 $grade = $_SESSION['grade'];
-                if($grade == "Admin"){
+                if(($grade == "Admin")||($donnees["user"]== $_SESSION['login'])){
                     echo '<div class="textGauche">';
-                        echo '<div >';
-                            echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" gridwidth: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
+                        echo '<div class="avatarMessage">';
+                            echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
                         echo '</div>';
                         echo '<div class="textGaucheContent">';
                             echo '<strong  style="font-size: 20px;">'.$donnees["user"].'  </strong>';
@@ -74,8 +96,8 @@ while ($donnees = $reponse->fetch())
                     echo '</div>';
                 }else{
                     echo '<div class="textGauche">';
-                        echo '<div >';
-                            echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" gridwidth: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
+                        echo '<div  class="avatarMessage">';
+                            echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
                         echo '</div>';
                         echo '<div class="textGaucheContent">';
                         echo '<strong  style="font-size: 20px;">'.$donnees["user"].'  </strong>';
@@ -87,8 +109,8 @@ while ($donnees = $reponse->fetch())
                 
             }else{
                 echo '<div class="textGauche">';
-                echo '<div >';
-                    echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" gridwidth: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
+                echo '<div  class="avatarMessage">';
+                    echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
                 echo '</div>';
                 echo '<div class="textGaucheContent">';
                 echo '<strong  style="font-size: 20px;">'.$donnees["user"].'  </strong>';
@@ -103,10 +125,10 @@ while ($donnees = $reponse->fetch())
             // affichage des différents éléments contenu dans le tableau message 
             if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
                 $grade = $_SESSION['grade'];
-                if($grade == "Admin"){
+                if(($grade == "Admin")||($donnees["user"]== $_SESSION['login'])){
                     echo '<div class="textDroite">';
-                        echo '<div >';
-                            echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" gridwidth: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
+                        echo '<div  class="avatarMessage">';
+                            echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
                         echo '</div>';
                         echo '<div class="textDroiteContent">';
                             echo '<strong  style="font-size: 20px;">'.$donnees["user"].'  </strong>';
@@ -118,8 +140,8 @@ while ($donnees = $reponse->fetch())
                 
                 }else{
                     echo '<div class="textDroite">';
-                        echo '<div >';
-                            echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" gridwidth: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
+                        echo '<div class="avatarMessage">';
+                            echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
                         echo '</div>';
                         echo '<div class="textDroiteContent">';
                             echo '<strong  style="font-size: 20px;">'.$donnees["user"].'  </strong>';
@@ -131,8 +153,8 @@ while ($donnees = $reponse->fetch())
                 
             }else{
                 echo '<div class="textDroite">';
-                echo '<div >';
-                    echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" gridwidth: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
+                echo '<div class="avatarMessage">';
+                    echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink; padding-right: 20%;"></img>';
                 echo '</div>';
                 echo '<div class="textDroiteContent">';
                     echo '<strong  style="font-size: 20px;">'.$donnees["user"].'  </strong>';

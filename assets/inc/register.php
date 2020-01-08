@@ -1,11 +1,10 @@
 
             <form class="register" action="" method="post">
-                <p>Pseudo: <input type="textarea" name="pseudo" required></p>
-                <p>Mot de Passe : <input type="password" name="mdp1" required></p>
-                <p>Retape votre Mot de Passe : <input type="password" name="mdp2" required></p>
-                <p>email : <input type="mail" name="email" required></p>
-                <p>url de votre avatar : <input type="textarea" name="avatar" required></p>
-
+                <label>Pseudo:</label> <input type="textarea" name="pseudo" placeholder="Username" required>
+                <label>Mot de Passe :</label><input type="password" name="mdp1" placeholder="Password" required>
+                <label>Retape votre Mot de Passe :</label><input type="password" name="mdp2" placeholder="Password" required>
+                <label>email :</label><input type="mail" name="email" placeholder="Mail" required>
+                <label>url de votre avatar :</label><input type="textarea" name="avatar" placeholder="Url" required>
                 <button type="submit" name="register" value="register">S'inscrire</button>
             </form>
 <?php
