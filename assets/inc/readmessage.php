@@ -88,19 +88,28 @@ while ($donnees = $reponse->fetch())
                             echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
                         echo '</div>';
                         echo '<div class="textGaucheContent">';
+                        if ($donnees['user'] == "Lili la licorne"){
+                            echo '<strong  style="font-size: 20px; color: green;">'.$donnees["user"].'  </strong>';
+                        }else{
                             echo '<strong  style="font-size: 20px;">'.$donnees["user"].'  </strong>';
+                        }
                             echo '<span  style="font-size: 12px;"> envoyé le '.$date.'</span>';
                             echo '<p>'.smiley($messageSmiley).'</p>';
                         echo '</div>';
                         echo '<button><a href="assets/inc/resetmessage.php?id='.$donnees['id'].'">Reset</a></button>';
                     echo '</div>';
+                
                 }else{
                     echo '<div class="textGauche">';
                         echo '<div  class="avatarMessage">';
                             echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
                         echo '</div>';
                         echo '<div class="textGaucheContent">';
+                        if ($donnees['user'] == "Lili la licorne"){
+                            echo '<strong  style="font-size: 20px; color: green;">'.$donnees["user"].'  </strong>';
+                        }else{
                         echo '<strong  style="font-size: 20px;">'.$donnees["user"].'  </strong>';
+                        }
                         echo '<span  style="font-size: 12px;"> envoyé le '.$date.'</span>';
                             echo '<p>'.smiley($messageSmiley).'</p>';
                         echo '</div>';
@@ -113,7 +122,11 @@ while ($donnees = $reponse->fetch())
                     echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
                 echo '</div>';
                 echo '<div class="textGaucheContent">';
+                if ($donnees['user'] == "Lili la licorne"){
+                    echo '<strong  style="font-size: 20px; color: green;">'.$donnees["user"].'  </strong>';
+                }else{
                 echo '<strong  style="font-size: 20px;">'.$donnees["user"].'  </strong>';
+                }
                 echo '<span  style="font-size: 12px;"> envoyé le '.$date.'</span>';
                     echo '<p>'.smiley($messageSmiley).'</p>';
                 echo '</div>';
@@ -121,6 +134,7 @@ while ($donnees = $reponse->fetch())
             }
 
     }else{
+
             // si l'id recu de la bdd est impair
             // affichage des différents éléments contenu dans le tableau message 
             if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
@@ -131,7 +145,11 @@ while ($donnees = $reponse->fetch())
                             echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
                         echo '</div>';
                         echo '<div class="textDroiteContent">';
+                        if ($donnees['user'] == "Lili la licorne"){
+                            echo '<strong  style="font-size: 20px; color: green;">'.$donnees["user"].'  </strong>';
+                        }else{
                             echo '<strong  style="font-size: 20px;">'.$donnees["user"].'  </strong>';
+                        }
                             echo '<span  style="font-size: 12px;"> envoyé le '.$date.'</span>';
                             echo '<p>'.smiley($messageSmiley).'</p>';
                         echo '</div>';
@@ -144,7 +162,11 @@ while ($donnees = $reponse->fetch())
                             echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink;"></img>';
                         echo '</div>';
                         echo '<div class="textDroiteContent">';
+                        if ($donnees['user'] == "Lili la licorne"){
+                            echo '<strong  style="font-size: 20px; color: green;">'.$donnees["user"].'  </strong>';
+                        }else{
                             echo '<strong  style="font-size: 20px;">'.$donnees["user"].'  </strong>';
+                        }
                             echo '<span  style="font-size: 12px;"> envoyé le '.$date.'</span>';
                             echo '<p>'.smiley($messageSmiley).'</p>';
                         echo '</div>';
@@ -157,7 +179,11 @@ while ($donnees = $reponse->fetch())
                     echo '<img src="'.$donnees['avatar'].'" alt="avatar" style=" width: 50px; height: 50px; border-radius: 50px; border: 3px solid pink; padding-right: 20%;"></img>';
                 echo '</div>';
                 echo '<div class="textDroiteContent">';
+                if ($donnees['user'] == "Lili la licorne"){
+                    echo '<strong  style="font-size: 20px; color: green;">'.$donnees["user"].'  </strong>';
+                }else{
                     echo '<strong  style="font-size: 20px;">'.$donnees["user"].'  </strong>';
+                }
                     echo '<span  style="font-size: 12px;"> envoyé le '.$date.'</span>';
                     echo '<p>'.smiley($messageSmiley).'</p>';
                 echo '</div>';
