@@ -1,6 +1,5 @@
 <?php
 
-
 // Creation de la fonction envoi du message
 function sendMessage()
 {
@@ -52,71 +51,72 @@ function sendMessage()
 
                         
                             </script>';
-        // Bot
-            // Salut lili
-                if($message == "Salut Lili !" ){
+                ///////////////////////////////////////////////////////////////////////
+                //              Lancement du bot                                     //
+                //////////////////////////////////////////////////////////////////////
+                // Creation d'un tableau message user => réponse lili
+                $hour = date("H:i:s");
+                $jour = date("w");
+                $now = date("d m Y");
+                switch ($jour) {
+                    case '0':
+                        $jour ="Dimanche";
+                        break;
 
-                    $userlili = "Lili la licorne";
-                    $avatarlili = 'assets/img/lili.gif';
-                    $datelili = date("Y-m-d H:i:s");
-                    $messagelili = "Salut $name !";
+                    case '1':
+                        $jour = "Lundi";
+                        break;
+                    case '2':
+                        $jour = "Mardi";
+                        break;
+                    case '3':
+                        $jour = "Mercredi";
+                        break;
+                    case '4':
+                        $jour = "Jeudi";
+                        break;
+                    case '5':
+                        $jour = "Vendredi";
+                        break;
+                    case '6':
+                        $jour = "Samedi";
+                        break;
 
-                    $req = $bdd->prepare('INSERT INTO message(user, date, message, avatar) VALUES(:userlili, :datelili, :messagelili, :avatarlili)');
-                    $req->execute(array(
-                        'userlili' => $userlili,
-                        'datelili' => $datelili,
-                        'messagelili' => '<p>' . $messagelili . '</p>',
-                        'avatarlili' => $avatarlili,
-                    ));    
+
+                    default:
+                        # code...
+                        break;
                 }
-            // je t'aime lili
-            if($message == "Je t aime Lili !" ){
+                $checkMessage = array(
+                    "Bonjour Lili" => "Bonjour $name",
+                    "Je t aime Lili" => "Moi aussi $name !",
+                    "Comment vas-tu Lili ?" => "Je suis sur un petit nuage, et toi $name ?",
+                    "Je vais bien Lili" => "C'est super, je suis trop contente pour toi $name",
+                    "Tu manges quoi ce soir Lili ?" => "Facile, comme tout les jours un arc-en-ciel",
+                    "Quelle heure est-il Lili ?" => "Il est $hour, $name",
+                    "Quel jour sommes-nous Lili ?" => "Nous sommes le $jour $now, $name",
 
-                $userlili = "Lili la licorne";
-                $avatarlili = 'assets/img/lili.gif';
-                $datelili = date("Y-m-d H:i:s");
-                $messagelili = "je t'aime aussi $name !";
+                );
+                // Creation d'un boucle qui générera une réponse selon le message recu.
+                foreach ($checkMessage as $key => $value) {
+                    // Vérifie si le message du tableau est exacte au message envoyé par l'utilisateur
+                    if ($key == $message) {
+                        // Préparation a l'envoi dans la bdd concernant le bot
+                        $userlili = "Lili la licorne";
+                        $avatarlili = 'assets/img/lili.gif';
+                        $datelili = date("Y-m-d H:i:s");
+                        // Le message sera la valeur du tableau choisi selon la clé.
+                        $messagelili = $value;
 
-                $req = $bdd->prepare('INSERT INTO message(user, date, message, avatar) VALUES(:userlili, :datelili, :messagelili, :avatarlili)');
-                $req->execute(array(
-                    'userlili' => $userlili,
-                    'datelili' => $datelili,
-                    'messagelili' => '<p>' . $messagelili . '</p>',
-                    'avatarlili' => $avatarlili,
-                ));    
-            }
-            // Comment ca va Lili ?
-            if($message == "Comment ca va Lili ?" ){
-
-                $userlili = "Lili la licorne";
-                $avatarlili = 'assets/img/lili.gif';
-                $datelili = date("Y-m-d H:i:s");
-                $messagelili = "Je vais bien $name et toi ?";
-
-                $req = $bdd->prepare('INSERT INTO message(user, date, message, avatar) VALUES(:userlili, :datelili, :messagelili, :avatarlili)');
-                $req->execute(array(
-                    'userlili' => $userlili,
-                    'datelili' => $datelili,
-                    'messagelili' => '<p>' . $messagelili . '</p>',
-                    'avatarlili' => $avatarlili,
-                ));    
-            }
-            // Réponse a je vais bien
-            if($message == "Je vais bien Lili !" ){
-
-                $userlili = "Lili la licorne";
-                $avatarlili = 'assets/img/lili.gif';
-                $datelili = date("Y-m-d H:i:s");
-                $messagelili = "Tant mieux $name !";
-
-                $req = $bdd->prepare('INSERT INTO message(user, date, message, avatar) VALUES(:userlili, :datelili, :messagelili, :avatarlili)');
-                $req->execute(array(
-                    'userlili' => $userlili,
-                    'datelili' => $datelili,
-                    'messagelili' => '<p>' . $messagelili . '</p>',
-                    'avatarlili' => $avatarlili,
-                ));    
-            }
+                        $req = $bdd->prepare('INSERT INTO message(user, date, message, avatar) VALUES(:userlili, :datelili, :messagelili, :avatarlili)');
+                        $req->execute(array(
+                            'userlili' => $userlili,
+                            'datelili' => $datelili,
+                            'messagelili' => '<p>' . $messagelili . '</p>',
+                            'avatarlili' => $avatarlili,
+                        ));
+                    }
+                }
             }
         }
         if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["upload"])) {
@@ -168,8 +168,8 @@ function sendMessage()
 if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
     sendMessage();
 } else {
-    echo'<div class="noconnect">';
-    echo'<img src="assets/img/connect.gif" alt="licorne">';
+    echo '<div class="noconnect">';
+    echo '<img src="assets/img/connect.gif" alt="licorne">';
     echo '<p>Veuillez vous connecter, pour écrire un message</p>';
     echo '</div>';
 }
