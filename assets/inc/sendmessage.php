@@ -97,6 +97,7 @@ function sendMessage()
                     "Quel jour sommes-nous Lili ?" => "Nous sommes le $jour $now, $name",
                     "Ouvre moi google Lili" => 'Voilà '. $name.', tu peux <a href="http://google.be" target="_blank">cliquer ici</a>',
                     "Musique Lili !" => 'Ouvre bien grand tes oreilles <button onclick="musiquePlay()">Play</button><button onclick="musiquePause()">Pause</button>',
+                    "Lili raconte moi une histoire" => 'Voilà une jolie histoire pour toi '. $name.', <a href="https://www.youtube.com/results?search_query=histoire+pour+enfant" target="_blank">cliquer ici</a>',
 
                 );
                 // Creation d'un boucle qui générera une réponse selon le message recu.

@@ -77,6 +77,17 @@ body {
   border: 3px solid pink;
 }
 
+@-moz-document url-prefix() {
+  .userOnline {
+    scrollbar-width: none;
+  }
+}
+
+.userOnline::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
 .userOnline {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -85,6 +96,8 @@ body {
       -ms-flex-align: center;
           align-items: center;
   background-color: #a7759c;
+  overflow: scroll;
+  height: 10%;
 }
 
 .userOnline .checkUser {

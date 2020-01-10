@@ -63,10 +63,23 @@ body {
     }
 }
 
+@-moz-document url-prefix() {
+    .userOnline {
+        scrollbar-width: none;
+    }
+}
+
+.userOnline::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
 .userOnline {
     display: flex;
     align-items: center;
     background-color: #a7759c;
+    overflow: scroll;
+    height: 10%;
     .checkUser {
         display: flex;
         flex-direction: column;
